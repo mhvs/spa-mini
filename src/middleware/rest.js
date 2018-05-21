@@ -2,9 +2,13 @@
 define(function () {
 
     return function rest(options) {
-        let matchers = options.matchers || [];
-        matchers.forEach(function (it, index, list) {
-            list[index] = str2matcher(it);
+        let routes = options.routes || [];
+        let matchers = [];
+
+        routes.forEach(function (it, index, list) {
+            let temp = str2matcher(it.path);
+            matchers[index] = temp;
+            list[index].matcher = temp.matcher;
         });
 
         function str2matcher(url) {

@@ -2,7 +2,7 @@
 define(function (require) {
     const Module = require('../common/Module');
 
-    return class Page404 extends Module {
+    return class GroupUsers extends Module {
         constructor(options){
             super(options);
             this._unode = null;
@@ -25,8 +25,21 @@ define(function (require) {
             this._doUpdateUser(context);
         }
 
+        handleClick(context){
+            const self = this;
+            document.getElementById('h-login-button').addEventListener('click',function () {
+                const user = {
+                    uid: Math.floor(Math.random()*10000000),
+                    username : document.getElementById('h-username').value
+                };
+                context.setSession(user);
+                context.redirect('/user/' + user.uid);
+            })
+        }
+
         _doUpdateUser(context){
-            this._unode.innerHTML = '<p>来到了未被发现的地方,宇宙寂静无声.</p>';
+            this._unode.innerHTML = '<p>users</p>';
+            this.handleClick(context);
         }
     }
 });

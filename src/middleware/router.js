@@ -6,14 +6,16 @@ define(function () {
 
         return function (context, next) {
             let path = context.hash.pathname;
-            let route = routes.find( r => r.path === path);
+            let route = routes.find( r => {
+                return r.matcher.test(path)
+            });
+
             if (!route) {
                 context.redirect('/404');
                 return;
             }
 
             const module = new route.component(options);
-            routes[name] = module;
             module.build(context);
 
             if (module === current) {

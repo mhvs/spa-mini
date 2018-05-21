@@ -10,6 +10,8 @@ define(function (require) {
     const SPA = require('./SPA');
     const Login = require('./page/Login');
     const Page404 = require('./page/404');
+    const GroupUsers = require('./page/GroupUsers');
+    const User = require('./page/User');
 
     const app = new SPA();
 
@@ -21,10 +23,6 @@ define(function (require) {
 
     const options = {
         root: document.getElementById('app'),
-        matchers:[
-            '/user/:uid',
-            '/group/:gid/users'
-        ],
         rules:[
             {
                 matcher: /\/group\/[\d]+\/user\/[\d]/i,
@@ -46,7 +44,15 @@ define(function (require) {
             {
                 path: '/404',
                 component: Page404,
-            }
+            },
+            {
+                path: '/user/:uid',
+                component: User,
+            },
+            {
+                path: '/group/:gid/users',
+                component: GroupUsers,
+            },
         ]
     };
 
