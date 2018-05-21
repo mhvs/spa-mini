@@ -33,7 +33,7 @@ define(function () {
         });
         return function (context,next) {
             if(!context.hash || !context.hash.pathname){
-                window.location.hash = '#/';
+                context.redirect('/');
                 return;
             }
 
@@ -43,12 +43,13 @@ define(function () {
 
             if(!!ret){
                 let target = ret.target(context);
-                window.location.hash = '#' + target;
+                context.redirect(target);
                 /*context.hash.pathname = target;
                 if(!!context.hash){
                     context.hash.pathname = target;
                 }*/
             } else {
+                //console.log('context',context)
                 next();
             }
         }

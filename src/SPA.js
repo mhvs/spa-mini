@@ -6,6 +6,7 @@ define(function (require) {
         constructor(options){
             this.mws = [];
             this.monitor = null;
+            this.session = null;
         }
 
         add(mw) {
@@ -32,10 +33,16 @@ define(function (require) {
             this.monitor = new Monitor({
                 onChange(event) {
                     spa.dispatch({
-                        request: new URL(event.newValue)
+                        request: new URL(event.newValue),
+                        session: spa.session,
+                        redirect,
+                        setSession: newSession => spa.session = newSession
                     });
                 }
             });
+            function redirect(hash) {
+                window.location.hash = '#' + hash;
+            }
         }
 
         destroy(){
