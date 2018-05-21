@@ -9,6 +9,7 @@ define(function (require) {
 
     const SPA = require('./SPA');
     const Login = require('./page/Login');
+    const Page404 = require('./page/404');
 
     const app = new SPA();
 
@@ -41,6 +42,10 @@ define(function (require) {
             {
                 path: '/login',
                 component: Login,
+            },
+            {
+                path: '/404',
+                component: Page404,
             }
         ]
     };
