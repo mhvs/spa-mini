@@ -29,10 +29,10 @@ define(function (require) {
             const self = this;
             document.getElementById('h-login-button').addEventListener('click',function () {
                 const user = {
-                    uid: Math.floor(Math.random()*10000000),
+                    uid: Math.floor(Math.random()*100),
                     username : document.getElementById('h-username').value
                 };
-                context.setSession(user);
+                context.setSession({ ...context.session, user});
                 context.redirect('/user/' + user.uid);
             })
         }
