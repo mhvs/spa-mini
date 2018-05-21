@@ -29,7 +29,7 @@ define(function (require) {
             const self = this;
             document.getElementById('h-login-button').addEventListener('click',function () {
                 const user = {
-                    uid: Math.floor(Math.random()*100),
+                    uid: document.getElementById('h-username').value,
                     username : document.getElementById('h-username').value
                 };
                 context.setSession({ ...context.session, user});

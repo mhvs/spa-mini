@@ -17,7 +17,7 @@ define(function (require) {
         show(context){
             super.show(context);
             let req = context.request;
-            this._doUpdateUser(req.restParams.uid);
+            this._doUpdateUser(context);
         }
 
         refresh(context){
@@ -26,8 +26,9 @@ define(function (require) {
             this._doUpdateUser(req.restParams.uid);
         }
 
-        _doUpdateUser(uid){
-            this._unode.innerHTML = '<p>大家好, 我是用户'+uid+'</p>'
+        _doUpdateUser(context){
+            const text = context.hash && context.hash.restParams && context.hash.restParams.uid;
+            this._unode.innerHTML = '<p>大家好, 我是用户' + text + '</p>';
         }
     }
 });

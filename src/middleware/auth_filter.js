@@ -7,6 +7,7 @@ define(function () {
             if (!uid) {
                 if(pathname!=='/login'&&pathname!=='/404'){
                     context.redirect('/login');
+                    return;
                 }
             }
             next();

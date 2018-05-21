@@ -25,21 +25,8 @@ define(function (require) {
             this._doUpdateUser(context);
         }
 
-        handleClick(context){
-            const self = this;
-            document.getElementById('h-login-button').addEventListener('click',function () {
-                const user = {
-                    uid: Math.floor(Math.random()*10000000),
-                    username : document.getElementById('h-username').value
-                };
-                context.setSession(user);
-                context.redirect('/user/' + user.uid);
-            })
-        }
-
         _doUpdateUser(context){
-            this._unode.innerHTML = '<p>users</p>';
-            this.handleClick(context);
+            this._unode.innerHTML = '<p>这里应该有一个用户列表.</p>';
         }
     }
 });
