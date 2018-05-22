@@ -9,7 +9,7 @@ define(function (require) {
             const pathname = context.hash.pathname;
             if (!uid) {
                 if(pathname!=='/login'&&pathname!=='/404'){
-                    // 请求接口
+                    // 请求接口, 验证成功向session写入user, 验证失败跳到登录页
                     request('/path/to/auth/user').then(res=>{
                         const user = res.data;
                         next();
