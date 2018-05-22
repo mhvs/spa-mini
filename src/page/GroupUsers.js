@@ -26,7 +26,8 @@ define(function (require) {
         }
 
         _doUpdateUser(context){
-            this._unode.innerHTML = '<p>这里应该有一个用户列表.</p>';
+            let gid = context.hash && context.hash.restParams && context.hash.restParams.gid || '';
+            this._unode.innerHTML = Array(10).fill(1).map( ( _, index) => '<a href="#/user/' + gid + index + '" ><p> 用户 '+ gid + index +' </p></a>').join('');
         }
     }
 });
