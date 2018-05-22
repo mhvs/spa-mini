@@ -4,9 +4,9 @@ define(function (require) {
 
     return class SPA {
         constructor(options){
-            this.mws = [];
-            this.monitor = null;
-            this.session = null;
+            this.mws = []; // 中间件
+            this.monitor = null; // 监听器
+            this.session = null; // 记住是否登录
         }
 
         add(mw) {
@@ -16,6 +16,7 @@ define(function (require) {
         }
 
         dispatch(context) {
+            // 处理一次event
             let index = 0;
             let next = () => {
                 let mw = this.mws[index];
@@ -28,8 +29,10 @@ define(function (require) {
         }
 
         start(options){
+            // 初始化所有中间件
             this.mws = this.mws.map(mw=>mw(options));
             const spa = this;
+            // 启动url监听器
             this.monitor = new Monitor({
                 onChange(event) {
                     spa.dispatch({
@@ -40,6 +43,7 @@ define(function (require) {
                     });
                 }
             });
+            // 重定向函数, 用来改变路由
             function redirect(hash) {
                 window.location.hash = '#' + hash;
             }

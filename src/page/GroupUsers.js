@@ -2,6 +2,10 @@
 define(function (require) {
     const Module = require('../common/Module');
 
+    /**
+     * @class GroupUsers
+     * @description 用户列表页面
+     */
     return class GroupUsers extends Module {
         constructor(options){
             super(options);
@@ -27,6 +31,7 @@ define(function (require) {
 
         _doUpdateUser(context){
             let gid = context.hash && context.hash.restParams && context.hash.restParams.gid || '';
+            // 生成用户列表
             this._unode.innerHTML = Array(10).fill(1).map( ( _, index) => '<a href="#/user/' + gid + index + '" ><p> 用户 '+ gid + index +' </p></a>').join('');
         }
     }

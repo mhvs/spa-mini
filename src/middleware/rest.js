@@ -1,6 +1,7 @@
 
 define(function () {
 
+    // rest参数解析中间件
     return function rest(options) {
         let routes = options.routes || [];
         let matchers = [];
@@ -11,6 +12,7 @@ define(function () {
             list[index].matcher = temp.matcher;
         });
 
+        // string转成匹配函数
         function str2matcher(url) {
             let ret = {
                 url: url,
@@ -25,6 +27,7 @@ define(function () {
             return ret;
         }
 
+        // 获得匹配到的参数
         function getParams(path) {
             let ret = {};
             matchers.find(function (it) {
@@ -40,6 +43,8 @@ define(function () {
 
         return function (context, next) {
             let req = context.request;
+
+            // 获得得到的rest参数并存到 context的 req 或者 hash上
             req.restParams = getParams(
                 req.pathname
             );
@@ -53,7 +58,7 @@ define(function () {
                     hash.pathname
                 );
             }
-            //console.log('rest', context);
+
             next();
         }
     }

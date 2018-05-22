@@ -15,6 +15,7 @@ define(function (require) {
 
     const app = new SPA();
 
+    // 增加中间件
     app.add(rest);
     app.add(history);
     app.add(rewrite);
@@ -22,7 +23,9 @@ define(function (require) {
     app.add(router);
 
     const options = {
+        // dom根容器
         root: document.getElementById('app'),
+        // 重定向规则
         rules:[
             {
                 matcher: /\/group\/[\d]+\/user\/[\d]/i,
@@ -36,6 +39,7 @@ define(function (require) {
                 target: '/user/1'
             }
         ],
+        // 路由
         routes: [
             {
                 path: '/login',

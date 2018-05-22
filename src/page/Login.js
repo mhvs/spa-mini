@@ -2,6 +2,10 @@
 define(function (require) {
     const Module = require('../common/Module');
 
+    /**
+     * @class Login
+     * @description 登录页面
+     */
     return class Login extends Module {
         constructor(options){
             super(options);
@@ -25,8 +29,8 @@ define(function (require) {
             this._doUpdateUser(context);
         }
 
+        // 注册监听器, 点击登录跳转到用户页, 可能有监听事件多次注册的问题
         handleClick(context){
-            const self = this;
             document.getElementById('h-login-button').addEventListener('click',function () {
                 const user = {
                     uid: document.getElementById('h-username').value,

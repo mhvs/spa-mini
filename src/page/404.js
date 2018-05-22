@@ -2,6 +2,10 @@
 define(function (require) {
     const Module = require('../common/Module');
 
+    /**
+     * @class Page404
+     * @description 404页面, 未匹配的路由回来到这里
+     */
     return class Page404 extends Module {
         constructor(options){
             super(options);
@@ -26,7 +30,7 @@ define(function (require) {
         }
 
         _doUpdateUser(context){
-            this._unode.innerHTML = '<p>来到了未被发现的地方,宇宙寂静无声.</p>';
+            this._unode.innerHTML = '<p>来到了未知的领域, 宇宙寂静无声.</p>';
         }
     }
 });

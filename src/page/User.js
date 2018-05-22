@@ -2,6 +2,10 @@
 define(function (require) {
     const Module = require('../common/Module');
 
+    /**
+     * @class User
+     * @description 用户页面
+     */
     return class User extends Module {
         constructor(options){
             super(options);
@@ -16,14 +20,12 @@ define(function (require) {
 
         show(context){
             super.show(context);
-            let req = context.request;
             this._doUpdateUser(context);
         }
 
         refresh(context){
             super.refresh(context);
-            let req = context.request;
-            this._doUpdateUser(req.restParams.uid);
+            this._doUpdateUser(context);
         }
 
         _doUpdateUser(context){
