@@ -1,5 +1,7 @@
 
 define(function () {
+
+    // 用户验证中间件, 如果用户未登录, 那么需要登录一次
     return function authFilter(options) {
         return function (context, next) {
             const uid = context.session && context.session.user && context.session.user.uid;

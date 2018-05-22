@@ -1,5 +1,10 @@
 
 define(function () {
+
+    /**
+     * @class Module
+     * @description 组件基类
+     */
     return class Module {
         constructor(options){
             this._parent = options.root; // 渲染在哪个位置

@@ -1,6 +1,7 @@
 
 define(function () {
 
+    // 历史中间件, 记录历史
     return function history(options) {
         const iframe = document.createElement('iframe');
         iframe.style.position = 'absolute';
