@@ -16,6 +16,7 @@ define(function (require) {
         }
 
         dispatch(context) {
+            console.log('context',context);
             // 处理一次event
             let index = 0;
             let next = () => {

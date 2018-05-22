@@ -30,7 +30,7 @@ define(function (require) {
 
         _doUpdateUser(context){
             const text = context.hash && context.hash.restParams && context.hash.restParams.uid;
-            this._unode.innerHTML = '<p>大家好, 我是用户' + text + '</p>';
+            this._unode.innerHTML = '<p>我是用户' + text + '的主页</p>';
         }
     }
 });
